@@ -31,21 +31,24 @@ def game_hash
     "Brendan Haywood" => {
       number: 33, shoe: 15, points: 6, rebounds: 12, assists: 12, steals: 22, blocks: 5, slam_dunks: 12}}}}
 end
-
+require 'pry'
 def num_points_scored(player)
   num_points = 0
   game_hash.each do |location, team|
-    team.each do |properties, data|
-      if properties == :players
-        data.each do |name, stats|
-          if name == player
-            num_points = stats[:points]
-          end
-        end
-      end
+    #binding.pry
+    #team.each do |properties, data|
+    if team[:players].has_key?(player)
+      return team[:players][player][:points]
+      #if properties == :players
+      #  data.each do |name, stats|
+       #   if name == player
+      #      return stats[:points]
+       #   end
+        #end
+      #end
     end
   end
-  num_points
+  #num_points
 end
 
 def shoe_size(player)
